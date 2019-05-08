@@ -11,7 +11,7 @@ const decode = require('jsonwebtoken').decode;
 const app = express();
 app.use(cors({ origin: true }));
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 const server = require('http').Server(app);
 
 server.listen(port, () => {
