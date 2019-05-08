@@ -51,6 +51,10 @@ app.post("/api/accesstoken", (req, res) => {
           }
         }).then(result => {
           const { data } = result;
+          res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+          res.header('Access-Control-Allow-Headers', 'Content-Type');
+          res.header('Access-Control-Allow-Origin', '*');
+          
           res.status(200).send(decode(data));
         }).catch(err => {
           console.log(err);
