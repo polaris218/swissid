@@ -23,6 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.post("/api/accesstoken", (req, res) => {
   const { code } = req.body;
+  console.log(code);
   request.post(
     {
       url: "https://login.int.swissid.ch/idp/oauth2/access_token",
@@ -54,7 +55,7 @@ app.post("/api/accesstoken", (req, res) => {
           res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
           res.header('Access-Control-Allow-Headers', 'Content-Type');
           res.header('Access-Control-Allow-Origin', '*');
-          
+
           res.status(200).send(decode(data));
         }).catch(err => {
           console.log(err);
